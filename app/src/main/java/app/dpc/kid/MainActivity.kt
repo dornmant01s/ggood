@@ -12,4 +12,3 @@ class MainActivity : Activity() {
             "Kid DPC: Ready for Device Owner provisioning."
     }
 }
-
