@@ -64,12 +64,12 @@ jobs:
           DOWNLOAD_URL="${{ github.server_url }}/${{ github.repository }}/releases/download/${TAG}/${FILE_NAME}"
           mkdir -p dist
           cat > dist/qr.json <<EOF
-{
-  "android.app.extra.PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME": "app.dpc.kid/.admin.KidAdminReceiver",
-  "android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_LOCATION": "${DOWNLOAD_URL}",
-  "android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_CHECKSUM": "${SHA256}"
-}
-EOF
+          {
+          "android.app.extra.PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME": "app.dpc.kid/.admin.KidAdminReceiver",
+          "android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_LOCATION": "${DOWNLOAD_URL}",
+          "android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_CHECKSUM": "${SHA256}"
+          }
+          EOF
           echo "qr=dist/qr.json" >> "$GITHUB_OUTPUT"
 
       - name: Upload artifacts
