@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "app.dpc.kid"
-    compileSdk = 35
+        namespace = "app.dpc.kid"
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "app.dpc.kid"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
     }
