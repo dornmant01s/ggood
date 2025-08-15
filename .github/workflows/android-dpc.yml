@@ -45,9 +45,19 @@ jobs:
       - name: Build app (debug+release)
         if: ${{ hashFiles('app/build.gradle.kts') != '' }}
         run: |
+          set -e
           gradle -v
-          gradle :app:assembleDebug
-          gradle :app:assembleRelease || echo "release failed; will use debug APK for QR"
+          gradle :app:assembleDebug --stacktrace --warning-mode all | tee gradle-debug.log
+          gradle :app:assembleRelease --stacktrace --warning-mode all || echo "release failed; using debug APK"
+
+      - name: Upload build logs
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gradle-logs
+          path: gradle-debug.log
+
+
 
       - name: Compute checksum & create QR JSON
         if: ${{ hashFiles('app/build.gradle.kts') != '' }}
