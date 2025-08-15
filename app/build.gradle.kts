@@ -25,16 +25,23 @@ android {
     }
 
     buildTypes {
-        getByName("debug") { }
-        create("release") {
-            isMinifyEnabled = false
-            isShrinkResources = false
-            // 키스토어 없으면 debug 서명으로라도 빌드되게
-            val hasKeystore = file(System.getenv("ANDROID_KEYSTORE_PATH") ?: "${'$'}{rootDir}/release.keystore").exists() &&
-                    (System.getenv("ANDROID_KEY_ALIAS") ?: "").isNotEmpty()
-            signingConfig = if (hasKeystore) signingConfigs.getByName("release") else signingConfigs.getByName("debug")
-        }
+    getByName("debug") { }
+
+    // 🔧 이미 존재하는 release를 가져와서 수정
+    getByName("release") {
+        isMinifyEnabled = false
+        isShrinkResources = false
+
+        // 서명키 없으면 debug 서명으로 빌드되게
+        val hasKeystore = file(System.getenv("ANDROID_KEYSTORE_PATH") ?: "${'$'}{rootDir}/release.keystore").exists() &&
+                (System.getenv("ANDROID_KEY_ALIAS") ?: "").isNotEmpty()
+        signingConfig = if (hasKeystore)
+            signingConfigs.getByName("release")
+        else
+            signingConfigs.getByName("debug")
     }
+}
+
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
