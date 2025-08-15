@@ -44,8 +44,9 @@ jobs:
       # app 모듈이 생긴 뒤에만 빌드
       - name: Build app (debug+release)
         if: ${{ hashFiles('app/build.gradle.kts') != '' }}
+        shell: bash
         run: |
-          set -e
+          set -euo pipefail
           gradle -v
           gradle :app:assembleDebug --stacktrace --warning-mode all | tee gradle-debug.log
           gradle :app:assembleRelease --stacktrace --warning-mode all || echo "release failed; using debug APK"
