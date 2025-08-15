@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.KidDpc" parent="Theme.AppCompat.DayNight.NoActionBar"/>
+    <!-- 프레임워크 기본 테마 (AppCompat 아님) -->
+    <style name="Theme.KidDpc" parent="@android:style/Theme.Material.Light.NoActionBar"/>
 </resources>
