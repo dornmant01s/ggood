@@ -6,7 +6,7 @@
         android:allowBackup="false"
         android:supportsRtl="true"
         android:label="@string/app_name"
-        android:theme="android:theme="@style/Theme.KidDpc"">
+        android:theme="@style/Theme.KidDpc">
 
         <activity
             android:name=".MainActivity"
