@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- 앱 전용 테마: Material3를 부모로 사용 -->
     <style name="Theme.KidDpc" parent="Theme.Material3.DayNight.NoActionBar"/>
 </resources>
