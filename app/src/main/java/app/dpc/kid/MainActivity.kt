@@ -2,15 +2,14 @@ package app.dpc.kid
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import app.dpc.kid.databinding.ActivityMainBinding
+import android.widget.TextView
+import app.dpc.kid.R
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        binding.textView.text = "Kid DPC: Ready for Device Owner provisioning."
+        setContentView(R.layout.activity_main)
+        findViewById<TextView>(R.id.textView).text =
+            "Kid DPC: Ready for Device Owner provisioning."
     }
 }
