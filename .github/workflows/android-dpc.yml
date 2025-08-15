@@ -61,7 +61,7 @@ jobs:
 
 
       - name: Compute checksum & create QR JSON
-        if: ${{ hashFiles('app/build.gradle.kts') != '' }}
+        if: ${{ success() && hashFiles('app/build.gradle.kts') != '' }}
         id: qr
         shell: bash
         run: |
